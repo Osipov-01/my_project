@@ -16,6 +16,9 @@ from sklearn.model_selection import cross_val_score
 import altair as alt
 import time
 
+from IPython.core.display import display, HTML
+from IPython.display import display_html
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -23,7 +26,6 @@ st.session_state['model'] = None
 st.session_state['true_uploaded'] = False
 st.session_state['data'] = None
 
- 
 
 STATE = np.random.RandomState(12345)
 pd.set_option('display.max_columns', None)
@@ -78,23 +80,6 @@ if (file_train is not None) & (file_test is not None):
         column_spaces = ['meal', 'reserved_room_type']
         d_train = delete_spaces(d_train, column_spaces)
         d_test = delete_spaces(d_test, column_spaces)
-
-        # def out_boxplot(dfs, columns):
-        #     count_df = len(dfs)
-        #     count_columns = len(columns)
-        #     fig, axs = plt.subplots(nrows= count_df, ncols= count_columns, figsize = (20,15))
-        #     fig.tight_layout(h_pad=2)
-        #     for row in range(count_df):
-        #         for column in range(count_columns):
-        # #             print(columns[column])
-        #             axs[row][column].boxplot(x=columns[column], data=dfs[row])
-        # #             axs[row][column].hist(x=columns[column], data=dfs[row])
-        #             axs[0][column].set_xlabel(columns[column])
-        #             if row == 0:
-        #                 axs[row][0].set_ylabel('data_train')
-        #             elif row == 1:
-        #                 axs[row][0].set_ylabel('data_test')
-        #     st.pyplot(fig)
 
         columns_numeric = d_test.columns.tolist()
         columns_object = ['arrival_date_year', 'arrival_date_week_number', 'arrival_date_day_of_month', 'arrival_date_month', 'meal', 'country', 'distribution_channel', 'reserved_room_type', 'customer_type', 'is_canceled', 'is_repeated_guest']
@@ -300,5 +285,3 @@ if (file_train is not None) & (file_test is not None):
     else:
         st.error('Загружены не те файлы: ' + "обучающий файл - 'hotel_train.csv', тестовый - 'hotel_test.csv'" )
 
-
-#streamlit run e:/Диплом/diplom.py   
