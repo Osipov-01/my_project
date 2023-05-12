@@ -5,3 +5,4 @@ openpyxl
 Pillow
 requests
 scikit-learn
+ipython
