@@ -16,8 +16,6 @@ from sklearn.model_selection import cross_val_score
 import altair as alt
 import time
 
-from IPython.core.display import display, HTML
-from IPython.display import display_html
 import warnings
 warnings.filterwarnings('ignore')
 
