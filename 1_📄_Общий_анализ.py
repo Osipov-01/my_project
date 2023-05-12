@@ -53,9 +53,9 @@ if (file_train is not None) & (file_test is not None):
 
     if (file_train.name == 'hotel_train.csv') & (file_test.name == 'hotel_test.csv'):
         st.session_state['true_uploaded'] = True
-        with st.spinner('Wait for it...'):
+        with st.spinner('Подождите немного...'):
             time.sleep(5)
-        st.success('Files uploaded!')
+        st.success('Файлы загружены!')
 
         data_train = pd.read_csv(file_train)
         data_test = pd.read_csv(file_test)
