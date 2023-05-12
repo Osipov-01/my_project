@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_predict
-import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import OrdinalEncoder #энкодинг
 from sklearn.preprocessing import StandardScaler #масштабирование
