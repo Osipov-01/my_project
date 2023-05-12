@@ -43,8 +43,11 @@ st.set_page_config(
 
 st.title('Общий анализ прогнозирования оттока клиентов в сети отелей «Как в гостях»')
 
-file_train = st.file_uploader("Данные для обучения модели", type = 'csv')
-file_test = st.file_uploader("Данные для тестирования модели", type = 'csv')
+col1, col2 = st.columns(2)
+with col1:
+    file_train = st.file_uploader("Данные для обучения модели", type = 'csv')
+with col2:
+    file_test = st.file_uploader("Данные для тестирования модели", type = 'csv')
 
 if (file_train is not None) & (file_test is not None):
 
