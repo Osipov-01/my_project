@@ -117,6 +117,7 @@ def do_analis(data, columns):
             st.write('')
         with col3:
             st.markdown(f'**Анализ полученной выгоды по различным разделам "{column}" после внедрения модели Decision Tree**')
+            st.dataframe(data.groupby(column)['profit'].сount())
             profit_bycolumn = int(data.groupby(column)['profit_tree'].sum().astype('int') - data.groupby(column)['profit'].sum().astype('int') - 400000/n*data.groupby(column)['profit'].сount())
             profit_bycolumn_df = pd.DataFrame(profit_bycolumn.sort_values(ascending=False), columns=['profit_from_DT'])
             st.dataframe(profit_bycolumn_df)
