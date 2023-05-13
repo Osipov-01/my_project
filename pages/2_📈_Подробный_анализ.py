@@ -106,19 +106,19 @@ def do_analis(data, columns):
         with col1:
             st.markdown(f'**Анализ прибыли по различным разделам "{column}" до внедрения модели Decision Tree**')
             before_bycolumn =  data.groupby(column)['profit'].sum().astype('int')
-            st.dataframe(before_bycolumn)
+            st.dataframe(before_bycolumn.sort_values(ascending=False))
             st.bar_chart(before_bycolumn)
             st.write('')
         with col2:
             st.markdown(f'**Анализ прибыли по различным разделам "{column}"  после внедрения модели Decision Tree**')
             after_bycolumn = data.groupby(column)['profit_tree'].sum().astype('int')
-            st.dataframe(after_bycolumn)
+            st.dataframe(after_bycolumn.sort_values(ascending=False))
             st.bar_chart(after_bycolumn)            
             st.write('')
         with col3:
             st.markdown(f'**Анализ полученной выгоды по различным разделам "{column}" после внедрения модели Decision Tree**')
             st.dataframe(data.groupby(column)['profit'].сount())
-            profit_bycolumn = int(data.groupby(column)['profit_tree'].sum().astype('int') - data.groupby(column)['profit'].sum().astype('int') - 400000/n*data.groupby(column)['profit'].сount())
+            profit_bycolumn = data.groupby(column)['profit_tree'].sum().astype('int') - data.groupby(column)['profit'].sum().astype('int') - data.groupby(column)['profit'].count() * int(400000/n)
             profit_bycolumn_df = pd.DataFrame(profit_bycolumn.sort_values(ascending=False), columns=['profit_from_DT'])
             st.dataframe(profit_bycolumn_df)
             st.bar_chart(profit_bycolumn_df)
